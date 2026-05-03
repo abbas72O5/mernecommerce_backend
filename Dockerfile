@@ -4,8 +4,8 @@ FROM node:16.20.2-bullseye-slim
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy server package metadata and install dependencies
-COPY server/package*.json ./
+# Copy package metadata and install dependencies
+COPY package*.json ./
 RUN npm install
 
 # Install Python and analytics dependencies
@@ -22,8 +22,8 @@ ENV PYTHON_PATH=/usr/bin/python3
 ENV ANALYTICS_PATH=/usr/src/app/analytics
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-# Copy the rest of the server code
-COPY server/. .
+# Copy the rest of the backend code
+COPY . .
 
 # Expose port 3000 for the server
 EXPOSE 3000
